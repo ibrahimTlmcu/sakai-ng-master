@@ -1,0 +1,77 @@
+/* Formun genel kapsayıcısı */
+form {
+    max-width: 600px;
+    margin: 2rem 0 0 1rem; /* sayfanın üstünden biraz boşluk, sola yaslı */
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Başlık sola yaslı */
+h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: left;
+    padding-left: 0.25rem;
+}
+
+/* Her alan (label + input) blok olarak alt alta */
+.field {
+    margin-bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* Label sola yaslı, kalın */
+label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #555;
+    align-self: flex-start;
+}
+
+/* Input, textarea ve dropdown genişlik %100, sade */
+input[pInputText],
+textarea[pInputTextarea],
+p-dropdown {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease;
+}
+
+/* Odak efekti */
+input[pInputText]:focus,
+textarea[pInputTextarea]:focus,
+p-dropdown:focus {
+    border-color: #4caf50;
+    outline: none;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Buton sola yaslı, genişlik otomatik */
+button.p-button {
+    font-size: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    transition: background-color 0.3s ease;
+    margin-left: 0; /* sola yaslı */
+}
+
+button.p-button:hover {
+    background-color: #388e3c;
+}
+
+/* Responsive küçük ekranlarda margin azalt */
+@media (max-width: 480px) {
+    form {
+        margin: 1rem 0 0 0.5rem;
+        max-width: 100%;
+    }
+}
