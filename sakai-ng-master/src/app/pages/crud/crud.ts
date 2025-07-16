@@ -191,7 +191,7 @@ interface ExportColumn {
                         <div class="col-span-6">
                             <label for="price" class="block font-bold mb-3">Price</label>
                             <p-inputnumber id="price" [(ngModel)]="product.price" mode="currency" currency="USD" locale="en-US" fluid />
-                        </div>
+                        8</div>
                         <div class="col-span-6">
                             <label for="quantity" class="block font-bold mb-3">Quantity</label>
                             <p-inputnumber id="quantity" [(ngModel)]="product.quantity" fluid />

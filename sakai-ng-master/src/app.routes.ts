@@ -7,10 +7,14 @@ import { Notfound } from './app/pages/notfound/notfound';
 import { DenemeComponent } from './app/pages/deneme/deneme.component';
 import { authGuard } from './app/guards/auth.guard';
 import { TalepAcComponent } from './app/talep-ac/talep-ac.component';
-import { Login } from './app/pages/auth/login'; // ✅ Bu önemli
+import { Login } from './app/pages/auth/login';
+import { KategoriEkleComponent } from './app/kategori-ekle/kategori-ekle.component';
+import { AdminGelenTaleplerComponent } from './app/admin-gelen-talepler/admin-gelen-talepler.component';
+import { Register } from './app/pages/auth/Register'; // ✅ Bu önemli
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
+    { path: 'register', component: Register },
 
     {
         path: '',
@@ -21,7 +25,10 @@ export const appRoutes: Routes = [
             { path: 'uikit', loadChildren: () => import('./app/pages/uikit/uikit.routes') },
             { path: 'pages', loadChildren: () => import('./app/pages/pages.routes') },
             { path: 'talep-ac', component: TalepAcComponent },
-            { path: 'deneme', component: DenemeComponent, canActivate: [authGuard] }
+            { path: 'kategori-ekle', component: KategoriEkleComponent },
+            { path: 'deneme', component: DenemeComponent, canActivate: [authGuard] },
+            { path: 'admin-gelen-talepler',component:AdminGelenTaleplerComponent} ,
+
         ]
     },
 
