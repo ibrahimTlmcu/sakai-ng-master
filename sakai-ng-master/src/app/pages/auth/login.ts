@@ -90,6 +90,7 @@ export class Login {
 
             this.axiosService.setAuthToken(response.data.token);
             alert('Giriş başarılı');
+            localStorage.setItem('login', this.loginData.login);
             this.router.navigate(['/dashboard']);
         } catch (error: any) {
             console.error('Giriş başarısız:', error);

@@ -21,14 +21,13 @@
         <div class="field">
             <label for="kategori">Kategori</label>
             <p-dropdown
-                name="kategori"
                 [options]="kategoriler"
+                [(ngModel)]="talep.kategoriId"
                 optionLabel="kategoriAd"
-                placeholder="Kategori seçiniz"
-                inputId="kategori"
-                required
-                [(ngModel)]="talep.kategori">
-            </p-dropdown>
+                optionValue="kategoriId"
+                placeholder="Kategori seçin"
+                name="kategori"
+            ></p-dropdown>
         </div>
 
         <div class="field">

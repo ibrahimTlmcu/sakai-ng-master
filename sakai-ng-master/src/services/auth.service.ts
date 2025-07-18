@@ -43,6 +43,10 @@
             return this.username.asObservable();
         }
 
+        getUsernameValue(): string | null {
+            return this.username.getValue();
+        }
+
         private  setAuthToken(token: string) {
             localStorage.setItem('auth_token', token);
         }

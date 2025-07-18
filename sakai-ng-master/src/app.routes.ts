@@ -10,7 +10,12 @@ import { TalepAcComponent } from './app/talep-ac/talep-ac.component';
 import { Login } from './app/pages/auth/login';
 import { KategoriEkleComponent } from './app/kategori-ekle/kategori-ekle.component';
 import { AdminGelenTaleplerComponent } from './app/admin-gelen-talepler/admin-gelen-talepler.component';
-import { Register } from './app/pages/auth/Register'; // ✅ Bu önemli
+import { Register } from './app/pages/auth/Register';
+import { KategoriGetirComponent } from './app/kategori-getir/kategori-getir.component';
+import { KategoriGuncelleComponent } from './app/kategori-guncelle/kategori-guncelle.component';
+import { AdminGelenTalepCevaplaComponent } from './app/admin-gelen-talep-cevapla/admin-gelen-talep-cevapla.component';
+import { TalepVeCevapGetirComponent } from './app/talep-ve-cevap-getir/talep-ve-cevap-getir.component';
+import { TaleplerimComponent } from './app/taleplerim/taleplerim.component'; // ✅ Bu önemli
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -26,8 +31,15 @@ export const appRoutes: Routes = [
             { path: 'pages', loadChildren: () => import('./app/pages/pages.routes') },
             { path: 'talep-ac', component: TalepAcComponent },
             { path: 'kategori-ekle', component: KategoriEkleComponent },
+            {path : 'talep-ve-cevap-getir' , component: TalepVeCevapGetirComponent },
+            { path: 'kategori-getir', component: KategoriGetirComponent },
             { path: 'deneme', component: DenemeComponent, canActivate: [authGuard] },
+            { path: 'admin-gelen-talep-cevapla/:id', component: AdminGelenTalepCevaplaComponent} ,
             { path: 'admin-gelen-talepler',component:AdminGelenTaleplerComponent} ,
+            { path: 'kategori-guncelle/:id', component: KategoriGuncelleComponent },
+            { path: 'taleplerim',component: TaleplerimComponent}
+
+
 
         ]
     },

@@ -21,7 +21,7 @@ export class TalepAcComponent implements OnInit {
         adSoyad: '',
         email: '',
         konu: '',
-        kategori: null,
+        kategoriId: null,
         aciklama: ''
     };
 
@@ -44,7 +44,7 @@ export class TalepAcComponent implements OnInit {
     async talepGonder() {
         try {
             console.log('Form gönderiliyor:', this.talep);
-            const response = await this.axiosService.request('post', '/api/talep', this.talep);
+            const response = await this.axiosService.request('post', '/api/talepler', this.talep);
             console.log('Talep başarıyla gönderildi:', response.data);
             alert('Talep başarıyla iletildi.');
             this.router.navigate(['/dashboard']);

@@ -57,6 +57,7 @@ import { Observable } from 'rxjs';
                         <i class="pi pi-palette"></i>
                     </button>
                     <app-configurator />
+
                 </div>
             </div>
 
