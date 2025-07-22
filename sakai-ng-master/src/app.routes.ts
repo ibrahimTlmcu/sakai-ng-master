@@ -15,7 +15,8 @@ import { KategoriGetirComponent } from './app/kategori-getir/kategori-getir.comp
 import { KategoriGuncelleComponent } from './app/kategori-guncelle/kategori-guncelle.component';
 import { AdminGelenTalepCevaplaComponent } from './app/admin-gelen-talep-cevapla/admin-gelen-talep-cevapla.component';
 import { TalepVeCevapGetirComponent } from './app/talep-ve-cevap-getir/talep-ve-cevap-getir.component';
-import { TaleplerimComponent } from './app/taleplerim/taleplerim.component'; // ✅ Bu önemli
+import { TaleplerimComponent } from './app/taleplerim/taleplerim.component';
+import { CevapGetirComponent } from './app/cevap-getir/cevap-getir.component'; // ✅ Bu önemli
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -37,7 +38,9 @@ export const appRoutes: Routes = [
             { path: 'admin-gelen-talep-cevapla/:id', component: AdminGelenTalepCevaplaComponent} ,
             { path: 'admin-gelen-talepler',component:AdminGelenTaleplerComponent} ,
             { path: 'kategori-guncelle/:id', component: KategoriGuncelleComponent },
-            { path: 'taleplerim',component: TaleplerimComponent}
+            { path: 'taleplerim',component: TaleplerimComponent},
+            { path: 'cevap-getir/:id', component: CevapGetirComponent }
+
 
 
 

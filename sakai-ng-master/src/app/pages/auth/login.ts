@@ -97,4 +97,11 @@ export class Login {
             alert('Hatalı giriş!');
         }
     }
+
+    logout() {
+        this.authService.logout();
+        this.axiosService.setAuthToken(null); // token temizle
+        alert('Çıkış yapıldı');
+        this.router.navigate(['/login']); // veya giriş sayfasına yönlendir
+    }
 }

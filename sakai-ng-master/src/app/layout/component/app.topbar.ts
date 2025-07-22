@@ -85,6 +85,8 @@ import { Observable } from 'rxjs';
                     <div *ngIf="!(username$ | async)">
                         Giriş yapılmadı
                     </div>
+
+
                 </div>
             </div>
         </div>

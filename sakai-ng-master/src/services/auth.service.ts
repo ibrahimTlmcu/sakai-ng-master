@@ -9,6 +9,7 @@
         providedIn: 'root'
     })
     export class AuthService {
+        private user: string | null = null;
         private loggedIn = new BehaviorSubject<boolean>(false);
         private username = new BehaviorSubject<string | null>(null);
 
@@ -21,6 +22,12 @@
             }
         }
 
+        logout() {
+            this.user = null;
+            localStorage.removeItem('login');
+            // Eğer token varsa onu da temizle
+            localStorage.removeItem('authToken');
+        }
 
         setUser(name: string) {
             this.username.next(name);
@@ -54,4 +61,6 @@
         private getAuthToken(): string | null {
             return localStorage.getItem('auth_token');
         }
+
+
     }
