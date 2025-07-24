@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AppMenuitem } from './app.menuitem';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
     selector: 'app-menu',
@@ -18,12 +19,32 @@ import { AppMenuitem } from './app.menuitem';
 export class AppMenu {
     model: MenuItem[] = [];
 
+    constructor(private authService: AuthService, private router: Router) {
+    }
+
     ngOnInit() {
         this.model = [
             {
                 label: 'Home',
-                items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/'] }]
+                items: [{ label: 'Ana Sayfa', icon: 'pi pi-fw pi-home', routerLink: ['/'] }],
             },
+            {
+                label: 'Hesap İşlemleri',
+                items: [
+                    {
+                        label: 'Çıkış Yap',
+                        icon: 'pi pi-fw pi-sign-out',
+                        command: () => this.authService.logout()
+                    },
+                    {
+                        label: 'Profil',
+                        icon: 'pi pi-fw pi-check-square',
+                        routerLink: ['/uikit/input']
+                    }
+                ]
+            },
+
+
             {
                 label: 'UI Components',
                 items: [

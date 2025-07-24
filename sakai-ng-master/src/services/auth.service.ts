@@ -1,5 +1,6 @@
     import { Injectable } from '@angular/core';
     import { BehaviorSubject } from 'rxjs';
+    import { Router } from '@angular/router';
 
     @Injectable({
       providedIn: 'root'
@@ -14,7 +15,7 @@
         private username = new BehaviorSubject<string | null>(null);
 
 
-        constructor() {
+        constructor(private router: Router) {
             const storedUsername = localStorage.getItem('username');
             if (storedUsername) {
                 this.username.next(storedUsername);
@@ -24,9 +25,10 @@
 
         logout() {
             this.user = null;
-            localStorage.removeItem('login');
+            localStorage.removeItem('username');
             // Eğer token varsa onu da temizle
-            localStorage.removeItem('authToken');
+            localStorage.removeItem('auth_token');
+            this.router.navigate(['/auth/login']);
         }
 
         setUser(name: string) {
@@ -39,6 +41,8 @@
             this.username.next(null);
             this.loggedIn.next(false);
             localStorage.removeItem('username'); // Kullanıcı adını sil
+
+
         }
 
         // Mevcut metodlarınız
@@ -61,6 +65,7 @@
         private getAuthToken(): string | null {
             return localStorage.getItem('auth_token');
         }
+
 
 
     }

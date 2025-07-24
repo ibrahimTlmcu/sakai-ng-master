@@ -41,24 +41,22 @@ import { AuthService } from '../../../services/auth.service';
                                     />
                                 </g>
                             </svg>
-                            <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Welcome to PrimeLand!</div>
-                            <span class="text-muted-color font-medium">Sign in to continue</span>
+                            <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Destek Paneline Hoşgeldiniz ! </div>
+                            <span class="text-muted-color font-medium">Giriş Yapın </span>
                         </div>
 
                         <div>
-                            <label for="email1" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2">Email</label>
-                            <input pInputText id="email1" type="text" placeholder="Email address" class="w-full md:w-[30rem] mb-8" [(ngModel)]="loginData.login" />
+                            <label for="email1" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2">Kullanıcı Adı</label>
+                            <input pInputText id="email1" type="text" placeholder="Kullanıcı Adı" class="w-full md:w-[30rem] mb-8" [(ngModel)]="loginData.login" />
 
-                            <label for="password1" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Password</label>
+                            <label for="password1" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Şifre</label>
                             <p-password id="password1" [(ngModel)]="loginData.password" placeholder="Password" [toggleMask]="true" styleClass="mb-4" [fluid]="true" [feedback]="false"></p-password>
 
                             <div class="flex items-center justify-between mt-2 mb-8 gap-8">
-                                <div class="flex items-center">
-                                    <label for="rememberme1">Remember me</label>
-                                </div>
-                                <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Forgot password?</span>
+
+                                <span class="font-medium no-underline ml-2 text-right cursor-pointer text-primary">Şifremi Unuttum </span>
                             </div>
-                            <p-button label="Sign In" styleClass="w-full" (click)="onLogin()"></p-button>
+                            <p-button label="Giriş Yap" styleClass="w-full" (click)="onLogin()"></p-button>
                         </div>
                     </div>
                 </div>
@@ -87,21 +85,15 @@ export class Login {
             console.log('Giriş başarılı:', response.data);
             this.authService.setUser(response.data.login);
 
-
             this.axiosService.setAuthToken(response.data.token);
             alert('Giriş başarılı');
             localStorage.setItem('login', this.loginData.login);
             this.router.navigate(['/dashboard']);
+
         } catch (error: any) {
             console.error('Giriş başarısız:', error);
             alert('Hatalı giriş!');
         }
     }
 
-    logout() {
-        this.authService.logout();
-        this.axiosService.setAuthToken(null); // token temizle
-        alert('Çıkış yapıldı');
-        this.router.navigate(['/login']); // veya giriş sayfasına yönlendir
-    }
 }

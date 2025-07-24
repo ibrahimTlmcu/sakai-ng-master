@@ -5,6 +5,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
+import Swal from 'sweetalert2';
 
 import { KategoriService } from '../services/kategori.service';
 import { AxiosService } from '../services/axios.service';
@@ -46,11 +47,33 @@ export class TalepAcComponent implements OnInit {
             console.log('Form gönderiliyor:', this.talep);
             const response = await this.axiosService.request('post', '/api/talepler', this.talep);
             console.log('Talep başarıyla gönderildi:', response.data);
-            alert('Talep başarıyla iletildi.');
-            this.router.navigate(['/dashboard']);
+
+            //SweetAlert2 Bildirimi
+            Swal.fire({
+                icon: 'success',
+                title: 'Talep Gönderildi',
+                text: 'Talebiniz başarıyla iletildi!',
+                confirmButtonText: 'Tamam',
+                timer: 3000,
+                timerProgressBar: true
+            });
+
+            // 3 saniye sonra yönlendir
+            setTimeout(() => {
+                this.router.navigate(['/dashboard']);
+            }, 3000);
+
         } catch (error: any) {
             console.error('Talep gönderme hatası:', error);
-            alert('Bir hata oluştu, lütfen tekrar deneyin.');
+
+            //  Hata mesajı
+            Swal.fire({
+                icon: 'error',
+                title: 'Hata!',
+                text: 'Bir hata oluştu, lütfen tekrar deneyin.',
+                confirmButtonText: 'Tamam'
+            });
         }
     }
+
 }
