@@ -26,7 +26,7 @@ export class AppMenu {
         this.model = [
             {
                 label: 'Home',
-                items: [{ label: 'Ana Sayfa', icon: 'pi pi-fw pi-home', routerLink: ['/'] }],
+                items: [{ label: 'Ana Sayfa', icon: 'pi pi-fw pi-home', routerLink: ['/dashboard'] }],
             },
             {
                 label: 'Hesap İşlemleri',

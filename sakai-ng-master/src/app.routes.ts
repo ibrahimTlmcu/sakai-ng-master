@@ -18,7 +18,7 @@ import { TalepVeCevapGetirComponent } from './app/talep-ve-cevap-getir/talep-ve-
 import { TaleplerimComponent } from './app/taleplerim/taleplerim.component';
 import { CevapGetirComponent } from './app/cevap-getir/cevap-getir.component';
 import { KullaniciProfilComponent } from './app/kullanici-profil/kullanici-profil.component';
-import { ChatComponent } from './app/chat/chat.component'; // ✅ Bu önemli
+import { ChatComponent } from './app/chat/chat.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -43,7 +43,8 @@ export const appRoutes: Routes = [
             { path: 'taleplerim',component: TaleplerimComponent},
             { path: 'cevap-getir/:id', component: CevapGetirComponent },
             { path : 'kullanici-profil' , component: KullaniciProfilComponent},
-            {path : 'chat', component: ChatComponent }
+            { path : 'chat', component: ChatComponent }
+
 
 
 
