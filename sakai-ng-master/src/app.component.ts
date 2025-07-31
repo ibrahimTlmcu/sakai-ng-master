@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ChatComponent } from './app/chat/chat.component';
+
+
 import { CommonModule } from '@angular/common';
 
 @Component({

@@ -16,9 +16,11 @@ import { KategoriGuncelleComponent } from './app/kategori-guncelle/kategori-gunc
 import { AdminGelenTalepCevaplaComponent } from './app/admin-gelen-talep-cevapla/admin-gelen-talep-cevapla.component';
 import { TalepVeCevapGetirComponent } from './app/talep-ve-cevap-getir/talep-ve-cevap-getir.component';
 import { TaleplerimComponent } from './app/taleplerim/taleplerim.component';
-import { CevapGetirComponent } from './app/cevap-getir/cevap-getir.component';
+
 import { KullaniciProfilComponent } from './app/kullanici-profil/kullanici-profil.component';
-import { ChatComponent } from './app/chat/chat.component';
+import { CreateTicketComponent } from './app/create-ticket/create-ticket.component';
+import { TicketListComponent } from './app/ticket-list/ticket-list.component';
+import { ChatRoomComponent } from './app/chat-room/chat-room.component';
 
 export const appRoutes: Routes = [
     { path: '', redirectTo: 'auth/login', pathMatch: 'full' },
@@ -41,14 +43,12 @@ export const appRoutes: Routes = [
             { path: 'admin-gelen-talepler',component:AdminGelenTaleplerComponent} ,
             { path: 'kategori-guncelle/:id', component: KategoriGuncelleComponent },
             { path: 'taleplerim',component: TaleplerimComponent},
-            { path: 'cevap-getir/:id', component: CevapGetirComponent },
+
             { path : 'kullanici-profil' , component: KullaniciProfilComponent},
-            { path : 'chat', component: ChatComponent }
-
-
-
-
-
+            { path: '', redirectTo: 'create-ticket', pathMatch: 'full' },
+            { path: 'create-ticket', component: CreateTicketComponent },
+            { path: 'tickets', component: TicketListComponent },
+            { path: 'chat/:ticketId', component: ChatRoomComponent },
         ]
     },
 
