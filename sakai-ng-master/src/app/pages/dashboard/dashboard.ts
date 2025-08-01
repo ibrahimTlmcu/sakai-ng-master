@@ -70,6 +70,16 @@ import { WeatherService } from '../../services/weather.service';
         <div class="mt-6">
             <p-button label="📝 Destek Talebi Oluştur" class="p-button-lg" [routerLink]="['/talep-ac']"></p-button>
         </div>
+
+
+
+
+        <!--Canlı dstek geçiş butonu  yeri değişecek  -->
+        <div class="mt-6">
+
+            <p-button [routerLink]="['/create-ticket']">  Canlı Destek <i class="pi pi-phone" style="font-size: 2rem"></i></p-button>
+
+        </div>
     `
 })
 export class Dashboard implements OnInit {

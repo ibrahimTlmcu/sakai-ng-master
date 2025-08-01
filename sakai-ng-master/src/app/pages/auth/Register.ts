@@ -1,3 +1,4 @@
+// src/app/register/register.component.ts
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -5,55 +6,93 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
+import { DropdownModule } from 'primeng/dropdown';
 import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
 import { AxiosService } from '../../services/axios.service';
 
 @Component({
     selector: 'app-register',
     standalone: true,
-    imports: [ButtonModule, InputTextModule, PasswordModule, FormsModule, RouterModule, RippleModule, AppFloatingConfigurator],
+    imports: [
+        ButtonModule,
+        InputTextModule,
+        PasswordModule,
+        FormsModule,
+        RouterModule,
+        RippleModule,
+        DropdownModule,
+        AppFloatingConfigurator
+    ],
     template: `
         <app-floating-configurator />
-        <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen min-w-[100vw] overflow-hidden">
-            <div class="flex flex-col items-center justify-center">
-                <div style="border-radius: 56px; padding: 0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%)">
-                    <div class="w-full bg-surface-0 dark:bg-surface-900 py-20 px-8 sm:px-20" style="border-radius: 53px; max-width: 400px;">
-                        <div class="text-center mb-8">
-                            <div class="text-surface-900 dark:text-surface-0 text-3xl font-medium mb-4">Create an Account</div>
-                            <span class="text-muted-color font-medium">Register to start your journey</span>
-                        </div>
+        <div class="bg-surface-50 dark:bg-surface-950 flex items-center justify-center min-h-screen">
+            <div class="max-w-md w-full p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
+                <h2 class="text-2xl font-semibold mb-6 text-center text-gray-900 dark:text-gray-100">
+                    Create an Account
+                </h2>
+                <form (ngSubmit)="onRegister()">
 
-                        <div>
-                            <label for="firstName" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2">First Name</label>
-                            <input pInputText id="firstName" type="text" placeholder="First Name" class="w-full mb-6" [(ngModel)]="registerData.firstName" />
+                    <label class="block mb-2 text-gray-700 dark:text-gray-300">First Name</label>
+                    <input pInputText
+                           [(ngModel)]="registerData.firstName"
+                           name="firstName"
+                           class="w-full mb-4 p-2 border rounded" />
 
-                            <label for="lastName" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2">Last Name</label>
-                            <input pInputText id="lastName" type="text" placeholder="Last Name" class="w-full mb-6" [(ngModel)]="registerData.lastName" />
+                    <label class="block mb-2 text-gray-700 dark:text-gray-300">Last Name</label>
+                    <input pInputText
+                           [(ngModel)]="registerData.lastName"
+                           name="lastName"
+                           class="w-full mb-4 p-2 border rounded" />
 
-                            <label for="login" class="block text-surface-900 dark:text-surface-0 text-xl font-medium mb-2">Username</label>
-                            <input pInputText id="login" type="text" placeholder="Username" class="w-full mb-6" [(ngModel)]="registerData.login" />
+                    <label class="block mb-2 text-gray-700 dark:text-gray-300">Username</label>
+                    <input pInputText
+                           [(ngModel)]="registerData.login"
+                           name="login"
+                           class="w-full mb-4 p-2 border rounded" />
 
-                            <label for="password" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Password</label>
-                            <p-password id="password" [(ngModel)]="registerData.password" placeholder="Password" [toggleMask]="true" styleClass="mb-6" [feedback]="true" [fluid]="true"></p-password>
+                    <label class="block mb-2 text-gray-700 dark:text-gray-300">Password</label>
+                    <p-password
+                        [(ngModel)]="registerData.password"
+                        name="password"
+                        placeholder="Password"
+                        [toggleMask]="true"
+                        styleClass="w-full mb-4"
+                        [feedback]="true"
+                        [fluid]="true">
+                    </p-password>
 
-                            <label for="confirmPassword" class="block text-surface-900 dark:text-surface-0 font-medium text-xl mb-2">Confirm Password</label>
-                            <p-password id="confirmPassword" [(ngModel)]="registerData.confirmPassword" placeholder="Confirm Password" [toggleMask]="true" styleClass="mb-8" [feedback]="false" [fluid]="true"></p-password>
+                    <label class="block mb-2 text-gray-700 dark:text-gray-300">Confirm Password</label>
+                    <p-password
+                        [(ngModel)]="registerData.confirmPassword"
+                        name="confirmPassword"
+                        placeholder="Confirm Password"
+                        [toggleMask]="true"
+                        styleClass="w-full mb-4"
+                        [feedback]="false"
+                        [fluid]="true">
+                    </p-password>
 
-                            <p-button label="Register" styleClass="w-full" (click)="onRegister()"></p-button>
-                        </div>
-                    </div>
-                </div>
+
+                    <p-button
+                        type="submit"
+                        label="Register"
+                        styleClass="w-full">
+                    </p-button>
+                </form>
             </div>
         </div>
     `
 })
 export class Register {
+
+
     registerData = {
         firstName: '',
         lastName: '',
         login: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        role: 'USER'   // varsayılan
     };
 
     constructor(
@@ -68,13 +107,13 @@ export class Register {
         }
 
         try {
-            const response = await this.axiosService.request('post', '/register', {
+            await this.axiosService.request('post', '/register', {
                 firstName: this.registerData.firstName,
                 lastName: this.registerData.lastName,
                 login: this.registerData.login,
-                password: this.registerData.password
+                password: this.registerData.password,
+                roles: [ this.registerData.role ]   // backende array olarak gönder
             });
-
             alert('Registration successful! Please login.');
             this.router.navigate(['/login']);
         } catch (error: any) {

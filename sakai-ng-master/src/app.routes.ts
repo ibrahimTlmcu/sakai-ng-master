@@ -5,7 +5,7 @@ import { Documentation } from './app/pages/documentation/documentation';
 import { Landing } from './app/pages/landing/landing';
 import { Notfound } from './app/pages/notfound/notfound';
 import { DenemeComponent } from './app/pages/deneme/deneme.component';
-import { authGuard } from './app/guards/auth.guard';
+
 import { TalepAcComponent } from './app/talep-ac/talep-ac.component';
 import { Login } from './app/pages/auth/login';
 import { KategoriEkleComponent } from './app/kategori-ekle/kategori-ekle.component';
@@ -38,7 +38,7 @@ export const appRoutes: Routes = [
             { path: 'kategori-ekle', component: KategoriEkleComponent },
             {path : 'talep-ve-cevap-getir' , component: TalepVeCevapGetirComponent },
             { path: 'kategori-getir', component: KategoriGetirComponent },
-            { path: 'deneme', component: DenemeComponent, canActivate: [authGuard] },
+
             { path: 'admin-gelen-talep-cevapla/:id', component: AdminGelenTalepCevaplaComponent} ,
             { path: 'admin-gelen-talepler',component:AdminGelenTaleplerComponent} ,
             { path: 'kategori-guncelle/:id', component: KategoriGuncelleComponent },
@@ -61,3 +61,19 @@ export const appRoutes: Routes = [
     { path: '**', redirectTo: '/notfound' }
 ];
 
+// // app-routing.module.ts
+// const routes: Routes = [
+//     {
+//         path: 'admin',
+//         component: AdminDashboardComponent,
+//         canActivate: [AuthGuard],
+//         data: { roles: ['ADMIN'] }    // sadece ADMIN görebilir
+//     },
+//     {
+//         path: 'tickets',
+//         component: TicketListComponent,
+//         canActivate: [AuthGuard],
+//         data: { roles: ['USER','ADMIN'] } // USER ve ADMIN
+//     },
+//     // ...
+// ];
